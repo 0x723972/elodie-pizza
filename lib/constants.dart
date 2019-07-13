@@ -10,3 +10,7 @@ const kTextStrongTitle = TextStyle(
   fontSize: 40,
   fontWeight: FontWeight.bold
 );
+
+const kTextDescription = TextStyle(
+  fontSize: 12
+);
