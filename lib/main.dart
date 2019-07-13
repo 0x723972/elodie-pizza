@@ -8,17 +8,10 @@ class ElodiePizza extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light().copyWith(
-        primaryColor: Colors.white,
-        appBarTheme: AppBarTheme.of(context).copyWith(
-          textTheme: Theme.of(context).textTheme,
-          elevation: 0
-        ),
-        textTheme: Typography.blackMountainView,
-      ),
-      darkTheme: ThemeData.dark().copyWith(
-
-      ),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        fontFamily: 'Montserrat',
+      ),      
       initialRoute: Screens.browse,
       routes: {
         Screens.browse: (context) => BrowseScreen(),
