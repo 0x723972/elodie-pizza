@@ -1,6 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:elodie_pizza/components/pizza_card.dart';
 import 'package:elodie_pizza/constants.dart';
+import 'package:elodie_pizza/logic/pizza.dart';
+import 'package:elodie_pizza/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class BrowseScreen extends StatefulWidget {
@@ -9,6 +11,27 @@ class BrowseScreen extends StatefulWidget {
 }
 
 class _BrowseScreenState extends State<BrowseScreen> {
+  List<Pizza> _pizzas;
+  List<PizzaCard> _cards = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _pizzas = Pizza.pizzas;
+    updateCards();
+  }
+
+  updateCards() {
+    _cards.clear();
+    for (var pizza in _pizzas) {
+      var card = PizzaCard(pizza: pizza, onTap: () {
+        Navigator.pushNamed(context, Screens.article, arguments: pizza);
+      });
+      _cards.add(card);
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,30 +86,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                     alignment: WrapAlignment.start,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     direction: Axis.horizontal,
-                    children: <Widget>[
-                      PizzaCard(name: 'Agenaise', price: 10.5, color: Colors.brown),
-                      PizzaCard(name: 'Armorique', price: 9.5, color: Colors.yellow.shade900),
-                      PizzaCard(name: 'Bambino', price: 6, color: Colors.red.shade900),
-                      PizzaCard(name: 'Bicquette', price: 9.5, color: Colors.teal),
-                      PizzaCard(name: 'Bolognaise', price: 8.5, color: Colors.green),
-                      PizzaCard(name: 'Bretonne', price: 9.5, color: Colors.brown.shade800),
-                      PizzaCard(name: 'Calzone', price: 7.5, color: Colors.pink.shade800),
-                      PizzaCard(name: 'Calzone Capri', price: 7.5, color: Colors.red.shade300),
-                      PizzaCard(name: 'Campagnarde', price: 9.5, color: Colors.orange.shade800),
-                      PizzaCard(name: 'Capri', price: 7.5, color: Colors.yellow.shade800, customImage: 'calzone_capri'),
-                      PizzaCard(name: 'Carbonara', price: 9.5, color: Colors.green.shade800),
-                      PizzaCard(name: 'Catalane', price: 10.5, color: Colors.blue.shade800),
-                      PizzaCard(name: 'Chevrette', price: 10, color: Colors.indigo.shade800),
-                      PizzaCard(name: 'Cochonette', price: 9, color: Colors.purple.shade800),
-                      PizzaCard(name: 'Fermière', price: 9, color: Colors.teal),
-                      PizzaCard(name: 'Flammekueche', price: 9.5, color: Colors.brown),
-                      PizzaCard(name: 'Fromagère', price: 9.5, color: Colors.pink.shade900),
-                      PizzaCard(name: 'Indienne', price: 9.5, color: Colors.green.shade900),
-                      PizzaCard(name: 'Kebab', price: 9.5, color: Colors.yellow.shade900),
-                      PizzaCard(name: 'Kebab+', price: 10.5, color: Colors.orange.shade900, customImage: 'kebab'),
-                      PizzaCard(name: 'Landaise', price: 10, color: Colors.blueGrey.shade900),
-                      PizzaCard(name: 'Marocaine', price: 10.5, color: Colors.purple.shade900),
-                    ],
+                    children: _cards,
                   ),
                 ],
               ),
