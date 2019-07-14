@@ -1,7 +1,7 @@
 name: elodie_pizza
-description: A new Flutter project.
+description: Elodie Pizza vous permet de consulter la liste des pizzas proposées par le célèbre camion des pizza cuites au feu de bois du bassin de la Bretagne romantique.
 
-version: 1.0.0+1
+version: 2.0.0
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -12,10 +12,15 @@ dependencies:
   cupertino_icons: ^0.1.2
   animated_text_kit: ^1.3.1
   font_awesome_flutter: ^8.4.0
+  flutter_launcher_icons: ^0.7.2+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  image_path: "icon.png"
 
 flutter:
   uses-material-design: true
