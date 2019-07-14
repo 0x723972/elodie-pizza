@@ -24,9 +24,11 @@ class _BrowseScreenState extends State<BrowseScreen> {
   updateCards() {
     _cards.clear();
     for (var pizza in _pizzas) {
-      var card = PizzaCard(pizza: pizza, onTap: () {
-        Navigator.pushNamed(context, Screens.article, arguments: pizza);
-      });
+      var card = PizzaCard(
+          pizza: pizza,
+          onTap: () {
+            Navigator.pushNamed(context, Screens.article, arguments: pizza);
+          });
       _cards.add(card);
     }
     setState(() {});
@@ -37,6 +39,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
+        toolbarOpacity: 0, // TODO : remove when buttons are fixed
         backgroundColor: kBackgroundColor,
         elevation: 0,
         leading: Icon(Icons.menu),
@@ -63,20 +66,24 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 Colors.black
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Ingrédients, Pizza, Prix, ...',
-                      icon: Icon(Icons.search),
+            Opacity(
+              // TODO : remove this when search is ready
+              opacity: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Ingrédients, Pizza, Prix, ...',
+                        icon: Icon(Icons.search),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(width: 10),
-                Icon(Icons.euro_symbol, color: Colors.grey),
-              ],
+                  SizedBox(width: 10),
+                  Icon(Icons.euro_symbol, color: Colors.grey),
+                ],
+              ),
             ),
             SizedBox(height: 20),
             Expanded(

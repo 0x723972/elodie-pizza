@@ -17,26 +17,25 @@ class _PizzaScreenState extends State<PizzaScreen> {
       appBar: AppBar(
         backgroundColor: pizza.color,
         elevation: 0,
-        leading: Icon(Icons.chevron_left),
+        leading: MaterialButton(          
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.chevron_left),
+        ),
       ),
       body: Container(
         color: pizza.color,
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(60),
+              padding: const EdgeInsets.only(top: 60, bottom: 60),
               child: Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Hero(
-                    tag: pizza.name,
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: Text(
-                        pizza.name,
-                        style: TextStyle(fontSize: 40),
-                      ),
-                    ),
+                  child: Text(
+                    pizza.name,
+                    style: TextStyle(fontSize: 40),
                   ),
                 ),
               ),
@@ -101,17 +100,18 @@ class _PizzaScreenState extends State<PizzaScreen> {
                       Text('30 cm', style: TextStyle(fontSize: 30)),
                       Row(
                         children: <Widget>[
-                          PizzaIconButton(
-                            icon: FontAwesomeIcons.minus,
-                            onPressed: () {},
-                          ),
-                          SizedBox(width: 15),
-                          Text('0', style: TextStyle(fontSize: 30)),
-                          SizedBox(width: 15),
-                          PizzaIconButton(
-                            icon: FontAwesomeIcons.plus,
-                            onPressed: () {},
-                          ),
+                          // Todo : uncomment when basket is ready
+                          // PizzaIconButton(
+                          //   icon: FontAwesomeIcons.minus,
+                          //   onPressed: () {},
+                          // ),
+                          // SizedBox(width: 15),
+                          // Text('0', style: TextStyle(fontSize: 30)),
+                          // SizedBox(width: 15),
+                          // PizzaIconButton(
+                          //   icon: FontAwesomeIcons.plus,
+                          //   onPressed: () {},
+                          // ),
                           Expanded(
                             child: Text(
                               pizza.price30.toStringAsFixed(2),
@@ -125,17 +125,18 @@ class _PizzaScreenState extends State<PizzaScreen> {
                       Text('40 cm', style: TextStyle(fontSize: 30)),
                       Row(
                         children: <Widget>[
-                          PizzaIconButton(
-                            icon: FontAwesomeIcons.minus,
-                            onPressed: () {},
-                          ),
-                          SizedBox(width: 15),
-                          Text('0', style: TextStyle(fontSize: 30)),
-                          SizedBox(width: 15),
-                          PizzaIconButton(
-                            icon: FontAwesomeIcons.plus,
-                            onPressed: () {},
-                          ),
+                          // TODO : uncomment when basket is ready
+                          // PizzaIconButton(
+                          //   icon: FontAwesomeIcons.minus,
+                          //   onPressed: () {},
+                          // ),
+                          // SizedBox(width: 15),
+                          // Text('0', style: TextStyle(fontSize: 30)),
+                          // SizedBox(width: 15),
+                          // PizzaIconButton(
+                          //   icon: FontAwesomeIcons.plus,
+                          //   onPressed: () {},
+                          // ),
                           Expanded(
                             child: Text(
                               pizza.price40.toStringAsFixed(2),
@@ -149,12 +150,16 @@ class _PizzaScreenState extends State<PizzaScreen> {
                       Expanded(
                         child: Container(),
                       ),
-                      MaterialButton(
-                        minWidth: double.infinity,
-                        color: pizza.color,
-                        child: Text('Ajouter'),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                        onPressed: () {},
+                      Opacity(
+                        // TODO : remove opacity when button is activated
+                        opacity: 0,
+                        child: MaterialButton(
+                          minWidth: double.infinity,
+                          color: pizza.color,
+                          child: Text('Ajouter'),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          onPressed: () {},
+                        ),
                       ),
                     ],
                   ),
